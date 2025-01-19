@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bus Ticket</title>
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        color: #000;
+          text-align: center;
+          margin: 0;
+          padding: 0;
+          background-color: #fff;
+        }
+        .ticket-container {
+          width: 300px;
+          margin: 20px auto;
+          padding: 10px;
+          border: 1px solid #000;
+          box-shadow: 0 0 5px rgba(0,0,0,0.3);
+        }
+        .header {
+        font-size: 24px;
+        font-weight: bold;
+        margin-top: 10px;
+        }
+        .header-image img {
+        max-width: 100%; /* Ensures the image fits within the container width */
+        height: auto; /* Maintains aspect ratio */
+        display: block;
+        margin: 0 auto;
+        }
+        .separator {
+        font-size: 20px;
+        color: #000;
+        margin: 10px 0;
+        }
+        .qr-code {
+        margin: 20px 0;
+        }
+    .route-info {
+      font-size: 20px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    .details {
+      font-size: 14px;
+      line-height: 1.6;
+      text-align: left;
+      margin: 10px auto;
+      width: 80%;
+    }
+    .details2 {
+      font-size: 11px;
+      line-height: 1.0;
+      text-align: left;
+      width: 95%;
+    }
+    .details p {
+      margin: 5px 0;
+    }
+    .detail1 {
+      margin: -5px 0px;
+      marginBottom: 20px 0;
+    }
+    .footer {
+      font-size: 14px;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    .inspection-note {
+      font-size: 12px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ticket-container">
+    
+    <!-- Header Image -->
+    <div class="header-image">
+      <img src="https://i.ibb.co/PDFkDB3/New-Project-11.png" alt="Company Logo">
+    </div>
+
+    <!-- Separator Line -->
+    <div class="separator">***********************************</div>
+
+    <!-- Transaction Information -->
+    <div class="details2">
+      <p><strong>Transaction ID:</strong>  ${itemId}</p>
+      <p><strong>Date:</strong>&nbsp;&nbsp;&nbsp; ${formattedDate} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Time:</strong>&nbsp;&nbsp;&nbsp; ${formattedTime}</p>
+    </div>
+
+    <!-- QR Code -->
+    <div class="qr-code">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?data=Transaction+ID:+${itemId}&size=150x150" alt="QR Code" width="150" height="150"/>
+      <p class="detail1">${ticketInfo?.bus_id}</p>
+    </div>
+    <div class="separator">***********************************</div>
+
+    <!-- Route Information -->
+    <div class="route-info">${ticketInfo?.route}</div>
+
+    <!-- Additional Information -->
+    <div class="details">
+      <p><strong>Bus ID:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${ticketInfo.tripInfo?.bus_id}</p>
+      <p><strong>Date:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${ticketInfo?.departure_date}</p>
+      <p><strong>Time:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${ticketInfo?.departure_time}</p>
+      <p><strong>Class:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${ticketInfo.tripInfo?.class}</p>
+      <p><strong>Discount:</strong>&nbsp;&nbsp;&nbsp;&nbsp;${ticketInfo?.discount}</p>
+    </div>
+
+    <!-- Separator Line -->
+    <div class="separator">***********************************</div>
+
+    <!-- Seat and Price Information -->
+    <div class="details">
+      <p class="route-info"><strong>Seat:      &nbsp;&nbsp;&nbsp;&nbsp;${ticketInfo?.bus_seat}</strong></p>
+      <p class="route-info"><strong>Price:     &nbsp;&nbsp; PHP ${ticketInfo?.price}</strong></p>
+   
+    </div>
+<div class="separator">***********************************</div>
+    <!-- Footer Message -->
+    <div class="inspection-note">
+      <p>KEEP THE TICKET FOR INSPECTION</p>
+      <p>THANK YOU!!!</p>
+    </div>
+    
+  </div>
+
+</body>
+</html>
